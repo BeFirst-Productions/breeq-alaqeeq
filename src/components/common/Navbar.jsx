@@ -1,11 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { SITE_CONFIG } from '../../utils/constants'
 import logo from '../../assets/logos/breeq-alaqeeq-technical-works.svg'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
+    const [lastScrollY, setLastScrollY] = useState(0)
     const location = useLocation()
+
+    useEffect(() => {
+        const controlNavbar = () => {
+            const currentScrollY = window.scrollY
+
+            // Show navbar when at the top of the page
+            if (currentScrollY < 10) {
+                setIsVisible(true)
+            }
+            // Hide when scrolling down, show when scrolling up
+            else if (currentScrollY > lastScrollY) {
+                // Scrolling down
+                setIsVisible(false)
+                setIsOpen(false) // Close mobile menu when hiding
+            } else {
+                // Scrolling up
+                setIsVisible(true)
+            }
+
+            setLastScrollY(currentScrollY)
+        }
+
+        window.addEventListener('scroll', controlNavbar)
+
+        return () => {
+            window.removeEventListener('scroll', controlNavbar)
+        }
+    }, [lastScrollY])
 
     // Nav Links (mapped to existing routes where possible)
     const navLinks = [
@@ -46,7 +76,10 @@ const Navbar = () => {
     ]
 
     return (
-        <nav className="bg-white sticky top-0 z-50 shadow-md font-sans">
+        <nav className={`bg-white fixed top-0 left-0 right-0 z-50 shadow-md font-sans transition-all duration-500 ease-in-out ${isVisible
+                ? 'translate-y-0 opacity-100'
+                : '-translate-y-full opacity-0'
+            }`}>
             <div className="flex w-full h-auto">
                 {/* 1. Logo Section - Scalable/Responsive width */}
                 <div className="hidden lg:flex shrink-0 w-[20%] xl:w-[250px] border-r border-gray-200 items-center justify-center p-2 bg-white">

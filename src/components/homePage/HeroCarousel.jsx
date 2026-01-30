@@ -11,7 +11,7 @@ const HeroCarousel = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
-        }, 3000); 
+        }, 3000);
         return () => clearInterval(interval);
     }, [currentSlide]);
 
@@ -56,40 +56,40 @@ const HeroCarousel = () => {
 
             {/* Content Container */}
             <div className="absolute inset-0 z-20 flex items-center">
-<Container>
-                <div className="c w-full">
-                    <div className="max-w-3xl overflow-hidden">
-                        {/* 
+                <Container>
+                    <div className="c w-full">
+                        <div className="max-w-3xl overflow-hidden">
+                            {/* 
                             Key-based re-rendering for animation: 
                             When key changes (on slide change), the element is removed and recreated, 
                             triggering the CSS animation.
                         */}
-                        <div key={currentSlide} className="animate-slide-in-left">
-                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                                {HERO_SLIDES[currentSlide].title}
-                            </h1>
-                            <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
-                                {HERO_SLIDES[currentSlide].description}
-                            </p>
+                            <div key={currentSlide} className="animate-slide-in-left">
+                                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                                    {HERO_SLIDES[currentSlide].title}
+                                </h1>
+                                <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
+                                    {HERO_SLIDES[currentSlide].description}
+                                </p>
 
-                            {/* "Get a Quick Quote" Button */}
-                            <Link
-                                to="/contact"
-                                className="inline-flex items-center bg-white h-14 pl-1 pr-8 rounded transition-transform hover:-translate-y-1"
-                            >
-                                <div className="h-12 w-12 bg-[#800000] flex items-center justify-center mr-4 rounded-sm">
-                                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </div>
-                                <span className="text-gray-900 font-bold text-lg tracking-wide">
-                                    Get a Quick Quote
-                                </span>
-                            </Link>
+                                {/* "Get a Quick Quote" Button */}
+                                <Link
+                                    to="/contact"
+                                    className="inline-flex items-center bg-white h-14 pl-1 pr-8 rounded transition-transform hover:-translate-y-1"
+                                >
+                                    <div className="h-12 w-12 bg-[#800000] flex items-center justify-center mr-4 rounded-sm">
+                                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-gray-900 font-bold text-lg tracking-wide">
+                                        Get a Quick Quote
+                                    </span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-</Container>
+                </Container>
 
             </div>
 
@@ -114,7 +114,7 @@ const HeroCarousel = () => {
                     </svg>
                 </button>
             </div>
-{/* </Container> */}
+            {/* </Container> */}
 
         </div>
     );
