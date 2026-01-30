@@ -6,7 +6,7 @@ const Container = ({ children, className, id }) => {
         <div
             id={id}
             className={clsx(
-                "w-full mx-auto px-4 sm:px-6 lg:px-12 xl:px-[160px] max-w-7xl",
+                "w-full mx-auto px-4 sm:px-6 lg:px-12 xl:px-[80px] max-w-7xl",
                 className
             )}
         >
