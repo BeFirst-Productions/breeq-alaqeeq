@@ -11,7 +11,7 @@ const Home = () => {
         <div className="min-h-screen">
             <HeroCarousel />
             <AboutUsSection />
-            {/* <ServicesGrid /> */}
+            <ServicesGrid />
             <WorkProcess />
             <IndustriesSection />
             <CTASection />
