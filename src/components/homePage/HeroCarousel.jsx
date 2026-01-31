@@ -33,24 +33,25 @@ const HeroCarousel = () => {
     }, [nextSlide]);
 
     return (
-        <div className="relative w-full
-   min-h-screen
-         overflow-hidden bg-gray-900 group">
+        <div className="relative w-full h-[calc(100vh-80px)] lg:h-[calc(100vh-112px)] overflow-hidden bg-gray-900 group">
 
-            {/* Background Images with Fade and Zoom Effect */}
             {HERO_SLIDES.map((slide, index) => (
                 <div
                     key={slide.id}
                     className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
                         }`}
                 >
-                    {/* Image with slow zoom (Ken Burns) effect */}
-                    <img
-                        src={slide.image}
-                        alt={slide.title}
-                        className={`w-full h-full object-cover transition-transform duration-[10000ms] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'
-                            }`}
-                    />
+                    {/* Responsive Picture for modern formats */}
+                    <picture>
+                        <source srcSet={slide.avif} type="image/avif" />
+                        <source srcSet={slide.image} type="image/webp" />
+                        <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className={`w-full h-full object-cover transition-transform duration-[10000ms] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'
+                                }`}
+                        />
+                    </picture>
                     {/* Overlay: Dark gradient from left */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
                 </div>
