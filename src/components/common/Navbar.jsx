@@ -13,15 +13,15 @@ const Navbar = () => {
         const controlNavbar = () => {
             const currentScrollY = window.scrollY
 
-            // Show navbar when at the top of the page
+
             if (currentScrollY < 10) {
                 setIsVisible(true)
             }
-            // Hide when scrolling down, show when scrolling up
+
             else if (currentScrollY > lastScrollY) {
                 // Scrolling down
                 setIsVisible(false)
-                setIsOpen(false) // Close mobile menu when hiding
+                setIsOpen(false)
             } else {
                 // Scrolling up
                 setIsVisible(true)
@@ -42,7 +42,7 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
         { name: 'Services', path: '/services' },
-        { name: 'Projects', path: '#' }, // Mapping 'Projects' text to '/portfolio' route
+        // { name: 'Projects', path: '#' }, 
         { name: 'FAQ', path: '/faq' },
         { name: 'Contact', path: '/contact' },
     ]
@@ -59,7 +59,7 @@ const Navbar = () => {
             : '-translate-y-full opacity-0'
             }`}>
             <div className="flex w-full h-auto">
-                {/* 1. Logo Section - Scalable/Responsive width */}
+
                 <div className="hidden lg:flex shrink-0 w-[20%] xl:w-[250px] border-r border-gray-200 items-center justify-center p-2 bg-[#FAF5F5]">
                     <Link to="/" className='w-full flex justify-end'>
                         <img src={logo} alt={SITE_CONFIG.name} className="h-16 w-auto object-contain" />
@@ -85,9 +85,9 @@ const Navbar = () => {
                     </button>
                 </div>
 
-                {/* 2. Middle Section - Flex Column */}
+
                 <div className="hidden lg:flex flex-col flex-grow">
-                    {/* Top Bar: Contact + Social */}
+
                     <div className="h-12 border-b border-gray-200 flex items-center justify-between px-6 lg:px-8 bg-gray-50/50">
                         {/* Contact Info */}
                         <div className="flex items-center space-x-6 text-sm text-gray-600 font-medium">
@@ -127,7 +127,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Bottom Bar: Links */}
+
                     <div className="h-16 flex items-center justify-center space-x-10">
                         {navLinks.map((link) => (
                             <Link
@@ -146,7 +146,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {/* 3. Right Section - Contact Button Area */}
+
                 <div className="hidden lg:flex w-[200px] shrink-0 bg-[#800000] items-center justify-center shadow-[inset_10px_0_20px_-10px_rgba(0,0,0,0.3)]">
                     <Link to="/contact" className="group">
                         <div className="flex items-center bg-white pl-2 pr-6 py-2">

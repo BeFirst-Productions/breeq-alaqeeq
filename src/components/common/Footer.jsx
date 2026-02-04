@@ -95,7 +95,7 @@ const Footer = () => {
                     <div className="lg:col-span-3">
                         {/* Map Placeholder or IFrame */}
                         <div className="bg-gray-200 rounded-lg h-32 w-full flex items-center justify-center overflow-hidden relative group">
-                            {/* Simple Map representation or interactive map */}
+                    
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d231220.32766327896!2d55.11666620580327!3d25.076280447833037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1709121221321!5m2!1sen!2s"
                                 width="100%"
@@ -114,7 +114,7 @@ const Footer = () => {
                 {/* 3. Bottom Bar */}
                 <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between">
                     <p className="text-gray-400 text-xs md:text-sm mb-4 md:mb-0 text-center md:text-left">
-                        &copy; 2026 {SITE_CONFIG.name}. Published by Next Media. All Rights Reserved.
+                        &copy; 2026 {SITE_CONFIG.name}. Published by <a href="https://nextmedia.ae/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">Next Media</a>. All Rights Reserved.
                     </p>
 
                     {/* Social Icons */}

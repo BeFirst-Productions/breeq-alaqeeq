@@ -7,9 +7,24 @@ const ContactContent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Here you would typically handle form submission
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! We will get back to you shortly.');
+
+        // Clean phone number (remove non-digits)
+        const cleanPhone = SITE_CONFIG.phone.replace(/\D/g, '');
+
+        // Formatted message with standard newlines
+        const messageText = `*New Inquiry from Website*\n\n` +
+            `*Name:* ${formData.name}\n` +
+            `*Email:* ${formData.email}\n` +
+            `*Subject:* ${formData.subject}\n\n` +
+            `*Message:*\n${formData.message}`;
+
+      
+        const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(messageText)}`;
+
+        // Open WhatsApp in a new tab
+        window.open(whatsappUrl, '_blank');
+
+        // Reset form
         setFormData({ name: '', email: '', subject: '', message: '' });
     };
 
@@ -48,7 +63,7 @@ const ContactContent = () => {
                 </svg>
             ),
             title: 'Our Location',
-            value: 'Dubai, United Arab Emirates',
+            value: 'Bur Dubai, Dubai - UAE',
             link: '#',
             bg: 'bg-[#800000]' // Using primary red again for balance
         }

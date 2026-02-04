@@ -4,7 +4,6 @@ import Container from '../common/Container';
 import SectionHeader from '../common/SectionHeader';
 import { useNavigate } from 'react-router-dom';
 
-// Import Service Images
 import buildingCleaning from '../../assets/images/services/building-cleaning.webp';
 import hvac from '../../assets/images/services/hvac-installation&maintenance.webp';
 import painting from '../../assets/images/services/painting-works.webp';
@@ -18,22 +17,22 @@ import engraving from '../../assets/images/services/engraving-ornamentation.webp
 import wallpaper from '../../assets/images/services/wallpaper-fixing.webp';
 
 const services = [
-    { id: 1, title: 'Building Cleaning Services', image: buildingCleaning },
-    { id: 2, title: 'HVAC Installation & Maintenance', image: hvac },
-    { id: 3, title: 'Painting Works', image: painting }, // Reduced width
-    { id: 4, title: 'Electromechanical (MEP) Works', image: electromechanical },
-    { id: 5, title: 'Plastering Works', image: plastering }, // Center image reduced
-    { id: 6, title: 'Plumbing & Sanitary Installation', image: plumbing },
-    { id: 7, title: 'Carpentry & Wood Flooring', image: carpentry },
-    { id: 8, title: 'Floor & Wall Tiling', image: flooring }, // Takes width of 2 images
-    { id: 9, title: 'False Ceiling & Light Partitions', image: falseCeiling },
-    { id: 10, title: 'Engraving & Ornamentation Works', image: engraving },
-    { id: 11, title: 'Wallpaper Fixing Works', image: wallpaper },
+    { id: 1, title: 'Building Cleaning Services', image: buildingCleaning, path: '/services/building-cleaning' },
+    { id: 2, title: 'HVAC Installation & Maintenance', image: hvac, path: '/services/hvac-maintenance' },
+    { id: 3, title: 'Painting Works', image: painting, path: '/services/painting-works' },
+    { id: 4, title: 'Electromechanical (MEP) Works', image: electromechanical, path: '/services/electromechanical-works' },
+    { id: 5, title: 'Plastering Works', image: plastering, path: '/services/plastering-works' },
+    { id: 6, title: 'Plumbing & Sanitary Installation', image: plumbing, path: '/services/plumbing-sanitary' },
+    { id: 7, title: 'Carpentry & Wood Flooring', image: carpentry, path: '/services/carpentry-flooring' },
+    { id: 8, title: 'Floor & Wall Tiling', image: flooring, path: '/services/tiling-works' },
+    { id: 9, title: 'False Ceiling & Light Partitions', image: falseCeiling, path: '/services/false-ceiling-partition' },
+    { id: 10, title: 'Engraving & Ornamentation Works', image: engraving, path: '/services/engraving-ornamentation' },
+    { id: 11, title: 'Wallpaper Fixing Works', image: wallpaper, path: '/services/wallpaper-fixing' },
 ];
 
 const getGridClass = (index) => {
     // Row 1: 5 - 5 - 2 (Total 12)
-    if (index === 0) return 'md:col-span-4'; // Increased width
+    if (index === 0) return 'md:col-span-4';
     if (index === 1) return 'md:col-span-5'; // Increased width (same as first)
     if (index === 2) return 'md:col-span-3'; // Reduced width
 
@@ -67,7 +66,7 @@ const ServicesGrid = () => {
                 // Update state whenever visibility changes
                 setIsInView(entry.isIntersecting);
             },
-            { threshold: 0.15 } // Increased threshold to prevent edge flickering
+            { threshold: 0.04 }
         );
 
         if (sectionRef.current) {
@@ -160,6 +159,7 @@ const ServicesGrid = () => {
                     {services.map((service, index) => (
                         <div
                             key={service.id}
+                            onClick={() => navigate(service.path)}
                             className={`group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-lg border-2 border-[#8F1413] bg-gray-900 ${getGridClass(index)} ${getAnimationClass(index)}`}
                         >
                             {/* Image with zoom effect */}
@@ -189,7 +189,7 @@ const ServicesGrid = () => {
 
                                 {/* Button container - slides up and fades in */}
                                 <div className="absolute bottom-6 left-6 opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                    <SecondaryButton onClick={() => navigate(`/services`)} />
+                                    <SecondaryButton onClick={(e) => { e.stopPropagation(); navigate(service.path); }} />
                                 </div>
                             </div>
                         </div>

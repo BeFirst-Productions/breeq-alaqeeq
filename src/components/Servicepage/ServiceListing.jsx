@@ -1,8 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Container from '../common/Container';
 import PrimaryButton from '../common/Buttons/PrimaryButton';
 import { serviceListingData } from '../../utils/serviceListingData';
-import { CheckCircle, ArrowRight, Star } from 'lucide-react';
 
 // Import Images
 import buildingCleaning from '../../assets/images/services/building-cleaning.webp';
@@ -18,6 +18,8 @@ import plumbing from '../../assets/images/services/plumbing-works.webp';
 import falseCeiling from '../../assets/images/services/false-ceiling.webp';
 
 const ServiceListing = () => {
+    const navigate = useNavigate();
+
     // Map service IDs to images
     const imageMap = {
         'building-cleaning': buildingCleaning,
@@ -49,83 +51,40 @@ const ServiceListing = () => {
                         >
                             {/* Content Section */}
                             <div className="flex-1 space-y-6">
-                                <div className="space-y-3">
-                                    {/* <span className="text-[#800000] font-bold tracking-wider uppercase text-sm">
-                                        Professional Service
-                                    </span> */}
-                                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                                <div className="space-y-4">
+                                    <h2
+                                        onClick={() => navigate(service.detailPage)}
+                                        className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight cursor-pointer hover:text-[#800000] transition-colors"
+                                    >
                                         {service.title}
                                     </h2>
-                                    <h3 className="text-lg md:text-xl text-gray-700 font-medium">
-                                        {service.subtitle}
-                                    </h3>
-                                    <p className="text-gray-600 leading-relaxed text-lg">
+                                    {/* Subtitle removed as requested for short description focus */}
+
+                                    <p className="text-gray-600 leading-relaxed text-lg line-clamp-4">
                                         {service.description}
                                     </p>
                                 </div>
 
-                                {/* Features List */}
-                                <div className="space-y-4 pt-2">
-                                    <h4 className="font-bold text-gray-900 flex items-center gap-2">
-                                        <ArrowRight className="w-5 h-5 text-[#800000]" />
-                                        <span>Key Services Include:</span>
-                                    </h4>
-                                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        {service.features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start gap-3">
-                                                <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                                                <span className="text-gray-700 font-medium">{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                {/* Why Choose Us (Conditional) */}
-                                {service.whyChooseUs && (
-                                    <div className="bg-[#FFF9F5] p-6 rounded-lg border border-gray-100 mt-4">
-                                        <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                            {/* <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" /> */}
-                                            Why Choose Us?
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            {service.whyChooseUs.map((reason, idx) => (
-                                                <li key={idx} className="flex items-center gap-2 text-gray-700">
-                                                    <div className="w-1.5 h-1.5 bg-[#800000] rounded-full" />
-                                                    {reason}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
                                 {/* CTAs */}
-                                {/* <div className="flex flex-wrap gap-4 pt-6">
-                                {service.cta.map((ctaText, idx) => (
-                                    idx === 0 ? (
+                                <div className="flex flex-wrap gap-4 pt-4">
+                                    {service.detailPage && (
                                         <PrimaryButton
-                                            key={idx}
-                                            text={ctaText}
-                                            onClick={() => window.location.href = '/contact'}
+                                            text="View Details"
+                                            onClick={() => navigate(service.detailPage)}
                                             icon="arrow"
                                         />
-                                    ) : (
-                                        <a
-                                            key={idx}
-                                            href="/contact"
-                                            className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-900 text-gray-900 font-bold hover:bg-gray-900 hover:text-white transition-colors duration-300 rounded-sm"
-                                        >
-                                            {ctaText}
-                                        </a>
-                                    )
-                                ))}
-                            </div> */}
+                                    )}
+                                </div>
                             </div>
 
                             {/* Image Section */}
                             <div className="flex-1 w-full">
-                                <div className="relative group">
+                                <div
+                                    className="relative group cursor-pointer"
+                                    onClick={() => navigate(service.detailPage)}
+                                >
                                     {/* Decorative Borders/Backdrops */}
-                                    <div className={`absolute -inset-4 bg-[#1183C8]/20 rounded-lg transform ${isEven ? 'rotate-2' : '-rotate-2'} transition-transform duration-500 group-hover:rotate-0`} />
+                                    <div className={`absolute -inset-4 bg-[#800000]/10 rounded-lg transform ${isEven ? 'rotate-2' : '-rotate-2'} transition-transform duration-500 group-hover:rotate-0`} />
                                     <div className={`absolute -inset-4 bg-gray-100 rounded-lg transform ${isEven ? '-rotate-2' : 'rotate-2'} -z-10 transition-transform duration-500 group-hover:rotate-0`} />
 
                                     {/* Main Image */}
@@ -133,6 +92,7 @@ const ServiceListing = () => {
                                         <img
                                             src={ServiceImage}
                                             alt={service.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                                         />
 

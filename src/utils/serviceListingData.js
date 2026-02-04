@@ -17,7 +17,8 @@ export const serviceListingData = [
             "Competitive pricing"
         ],
         cta: ["Request a Free Site Visit", "Get a Cleaning Quote"],
-        id: "building-cleaning"
+        id: "building-cleaning",
+        detailPage: "/services/building-cleaning"
     },
     {
         title: "Painting Works in Dubai",
@@ -36,7 +37,8 @@ export const serviceListingData = [
             "Clean and timely execution"
         ],
         cta: ["Get a Painting Quote", "Book a Site Inspection"],
-        id: "painting-works"
+        id: "painting-works",
+        detailPage: "/services/painting-works"
     },
     {
         title: "Plastering Works in Dubai",
@@ -49,7 +51,8 @@ export const serviceListingData = [
             "Gypsum & cement plaster finishes"
         ],
         cta: ["Request a Site Visit", "Get a Plastering Quote"],
-        id: "plastering-works"
+        id: "plastering-works",
+        detailPage: "/services/plastering-works"
     },
     {
         title: "Air-Conditioning, Ventilation & Air Filtration Services in Dubai",
@@ -67,7 +70,8 @@ export const serviceListingData = [
             "Compliance with UAE standards"
         ],
         cta: ["Get HVAC Support", "Request a Quote"],
-        id: "hvac-services"
+        id: "hvac-services",
+        detailPage: "/services/hvac-maintenance"
     },
     {
         title: "Electromechanical Equipment Installation & Maintenance (MEP)",
@@ -80,7 +84,8 @@ export const serviceListingData = [
             "Preventive maintenance solutions"
         ],
         cta: ["Contact Our MEP Team", "Request a Quote"],
-        id: "mep-services"
+        id: "mep-services",
+        detailPage: "/services/electromechanical-works"
     },
     {
         title: "Wallpaper Fixing Works in Dubai",
@@ -92,7 +97,8 @@ export const serviceListingData = [
             "Wallpaper removal & replacement"
         ],
         cta: ["Book Wallpaper Installation", "Get a Quote"],
-        id: "wallpaper-fixing"
+        id: "wallpaper-fixing",
+        detailPage: "/services/wallpaper-fixing"
     },
     {
         title: "Carpentry & Wood Flooring Works in Dubai",
@@ -104,7 +110,8 @@ export const serviceListingData = [
             "Wood flooring installation & repair"
         ],
         cta: ["Request Carpentry Services", "Get a Quote"],
-        id: "carpentry-flooring"
+        id: "carpentry-flooring",
+        detailPage: "/services/carpentry-flooring"
     },
     {
         title: "Engraving & Ornamentation Works in Dubai",
@@ -116,7 +123,8 @@ export const serviceListingData = [
             "Customized interior detailing"
         ],
         cta: ["Discuss Your Design", "Request a Quote"],
-        id: "engraving-ornamentation"
+        id: "engraving-ornamentation",
+        detailPage: "/services/engraving-ornamentation"
     },
     {
         title: "Floor & Wall Tiling Works in Dubai",
@@ -128,7 +136,8 @@ export const serviceListingData = [
             "Repair & replacement works"
         ],
         cta: ["Get a Tiling Quote", "Book a Site Visit"],
-        id: "tiling-works"
+        id: "tiling-works",
+        detailPage: "/services/tiling-works"
     },
     {
         title: "Plumbing & Sanitary Installation Services in Dubai",
@@ -140,7 +149,8 @@ export const serviceListingData = [
             "Leak detection & maintenance"
         ],
         cta: ["Call Our Plumbers", "Request a Quote"],
-        id: "plumbing-sanitary"
+        id: "plumbing-sanitary",
+        detailPage: "/services/plumbing-sanitary"
     },
     {
         title: "False Ceiling & Light Partition Installation in Dubai",
@@ -152,6 +162,7 @@ export const serviceListingData = [
             "Light partition installations"
         ],
         cta: ["Get a False Ceiling Quote", "Request a Site Visit"],
-        id: "false-ceiling"
+        id: "false-ceiling",
+        detailPage: "/services/false-ceiling-partition"
     }
 ];
